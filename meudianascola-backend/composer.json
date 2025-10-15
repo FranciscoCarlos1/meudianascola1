@@ -1,0 +1,9 @@
+{
+  "name": "meudianascola/backend",
+  "require": {
+    "php": "^8.0",
+    "laravel/framework": "^10.0",
+    "kreait/laravel-firebase": "^4.0",
+    "laravel/sanctum": "^3.0"
+  }
+}
