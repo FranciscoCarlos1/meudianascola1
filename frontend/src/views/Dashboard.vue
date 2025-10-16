@@ -1,17 +1,27 @@
 <template>
-  <div style="padding:20px">
-    <h2>Dashboard</h2>
-    <ul>
-      <li>Total de alunos: {{ counts.students }}</li>
-      <li>Total de turmas: {{ counts.classes }}</li>
-    </ul>
+  <div>
+    <h2 class="text-xl font-semibold text-gray-800 mb-6">Dashboard</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card p-6">
+        <p class="text-gray-500 text-sm">Total de Alunos</p>
+        <p class="text-3xl font-semibold text-gray-800">{{ counts.students }}</p>
+      </div>
+      <div class="card p-6">
+        <p class="text-gray-500 text-sm">Total de Turmas</p>
+        <p class="text-3xl font-semibold text-gray-800">{{ counts.classes }}</p>
+      </div>
+      <div class="card p-6">
+        <p class="text-gray-500 text-sm">Última atualização</p>
+        <p class="text-lg text-gray-700">{{ new Date().toLocaleString() }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { onMounted, reactive } from 'vue'
 import API from '../api'
-
 const counts = reactive({ students: 0, classes: 0 })
 
 onMounted(async () => {

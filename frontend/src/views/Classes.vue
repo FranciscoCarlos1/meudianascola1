@@ -1,25 +1,39 @@
 <template>
-  <div style="padding:20px">
-    <h2>Turmas</h2>
-    <form @submit.prevent="add">
-      <input v-model="form.name" placeholder="Nome da Turma">
-      <input v-model.number="form.year" placeholder="Ano" type="number">
-      <button>Adicionar</button>
-    </form>
-    <table border="1" cellpadding="6" style="margin-top:10px; width:100%">
-      <thead><tr><th>ID</th><th>Nome</th><th>Ano</th><th>Ações</th></tr></thead>
-      <tbody>
-        <tr v-for="c in classes" :key="c.id">
-          <td>{{ c.id }}</td>
-          <td><input v-model="c.name"></td>
-          <td><input type="number" v-model.number="c.year"></td>
-          <td>
-            <button @click="save(c)">Salvar</button>
-            <button @click="del(c)">Excluir</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="space-y-6">
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-semibold text-gray-800">Turmas</h2>
+      <form @submit.prevent="add" class="flex gap-3">
+        <input v-model="form.name" placeholder="Nome da Turma" class="input">
+        <input v-model.number="form.year" placeholder="Ano" type="number" class="input">
+        <button class="btn btn-primary">Adicionar</button>
+      </form>
+    </div>
+
+    <div class="card overflow-hidden">
+      <table class="table">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="th">ID</th>
+            <th class="th">Nome</th>
+            <th class="th">Ano</th>
+            <th class="th">Ações</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 bg-white">
+          <tr v-for="c in classes" :key="c.id">
+            <td class="td">{{ c.id }}</td>
+            <td class="td"><input v-model="c.name" class="input"></td>
+            <td class="td"><input type="number" v-model.number="c.year" class="input"></td>
+            <td class="td">
+              <div class="flex gap-2">
+                <button class="btn btn-outline" @click="save(c)">Salvar</button>
+                <button class="btn btn-outline" @click="del(c)">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 

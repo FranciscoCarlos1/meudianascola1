@@ -7,13 +7,13 @@ import Attendance from './views/Attendance.vue'
 import Grades from './views/Grades.vue'
 
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/dashboard' },
   { path: '/login', component: Login },
-  { path: '/dashboard', component: Dashboard },
-  { path: '/students', component: Students },
-  { path: '/classes', component: Classes },
-  { path: '/attendance', component: Attendance },
-  { path: '/grades', component: Grades },
+  { path: '/dashboard', component: Dashboard, meta: { requiresAuth: true } },
+  { path: '/students', component: Students, meta: { requiresAuth: true } },
+  { path: '/classes', component: Classes, meta: { requiresAuth: true } },
+  { path: '/attendance', component: Attendance, meta: { requiresAuth: true } },
+  { path: '/grades', component: Grades, meta: { requiresAuth: true } },
 ]
 
 const router = createRouter({

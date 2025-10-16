@@ -1,24 +1,41 @@
 <template>
-  <div style="padding:20px">
-    <h2>Frequência</h2>
-    <form @submit.prevent="save">
-      <input v-model.number="class_id" placeholder="ID da Turma" type="number">
-      <input v-model.number="student_id" placeholder="ID do Aluno" type="number">
-      <input v-model="date" type="date">
-      <select v-model="status">
+  <div class="space-y-6">
+    <h2 class="text-xl font-semibold text-gray-800">Frequência</h2>
+
+    <form @submit.prevent="save" class="card p-6 grid md:grid-cols-5 gap-3">
+      <input v-model.number="class_id" placeholder="ID da Turma" type="number" class="input md:col-span-1">
+      <input v-model.number="student_id" placeholder="ID do Aluno" type="number" class="input md:col-span-1">
+      <input v-model="date" type="date" class="input md:col-span-1">
+      <select v-model="status" class="input md:col-span-1">
         <option value="present">Presente</option>
         <option value="absent">Faltou</option>
         <option value="late">Atraso</option>
       </select>
-      <button>Lançar</button>
+      <button class="btn btn-primary md:col-span-1">Lançar</button>
     </form>
 
-    <h3 style="margin-top:20px">Registros</h3>
-    <ul>
-      <li v-for="a in items" :key="a.id">
-        {{ a.date }} - aluno {{ a.student_id }} na turma {{ a.class_id }}: {{ a.status }}
-      </li>
-    </ul>
+    <div class="card p-0 overflow-hidden">
+      <table class="table">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="th">ID</th>
+            <th class="th">Data</th>
+            <th class="th">Aluno</th>
+            <th class="th">Turma</th>
+            <th class="th">Status</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 bg-white">
+          <tr v-for="a in items" :key="a.id">
+            <td class="td">{{ a.id }}</td>
+            <td class="td">{{ a.date }}</td>
+            <td class="td">{{ a.student_id }}</td>
+            <td class="td">{{ a.class_id }}</td>
+            <td class="td capitalize">{{ a.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
